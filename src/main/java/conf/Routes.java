@@ -16,17 +16,13 @@
 
 package conf;
 
+import controllers.*;
 import ninja.AssetsController;
 import ninja.Router;
 import ninja.application.ApplicationRoutes;
 import ninja.utils.NinjaProperties;
 
 import com.google.inject.Inject;
-
-import controllers.ApiController;
-import controllers.ApplicationController;
-import controllers.ArticleController;
-import controllers.LoginLogoutController;
 
 public class Routes implements ApplicationRoutes {
     
@@ -47,35 +43,20 @@ public class Routes implements ApplicationRoutes {
         
         // puts test data into db:
         if (!ninjaProperties.isProd()) {
-            router.GET().route("/setup").with(ApplicationController.class, "setup");
+        //    router.GET().route("/setup").with(ApplicationController.class, "setup");
         }
-        
+
+
         ///////////////////////////////////////////////////////////////////////
         // Login / Logout
         ///////////////////////////////////////////////////////////////////////
-        router.GET().route("/login").with(LoginLogoutController.class, "login");
         router.POST().route("/login").with(LoginLogoutController.class, "loginPost");
         router.GET().route("/logout").with(LoginLogoutController.class, "logout");
-        
+        router.POST().route("/registration").with(RegistrationController.class, "registerUser");
         ///////////////////////////////////////////////////////////////////////
-        // Create new article
-        ///////////////////////////////////////////////////////////////////////
-        router.GET().route("/article/new").with(ArticleController.class, "articleNew");
-        router.POST().route("/article/new").with(ArticleController.class, "articleNewPost");
-        
-        ///////////////////////////////////////////////////////////////////////
-        // Create new article
-        ///////////////////////////////////////////////////////////////////////
-        router.GET().route("/article/{id}").with(ArticleController.class, "articleShow");
 
-        ///////////////////////////////////////////////////////////////////////
-        // Api for management of software
-        ///////////////////////////////////////////////////////////////////////
-        router.GET().route("/api/{username}/articles.json").with(ApiController.class, "getArticlesJson");
-        router.GET().route("/api/{username}/article/{id}.json").with(ApiController.class, "getArticleJson");
-        router.GET().route("/api/{username}/articles.xml").with(ApiController.class, "getArticlesXml");
-        router.POST().route("/api/{username}/article.json").with(ApiController.class, "postArticleJson");
-        router.POST().route("/api/{username}/article.xml").with(ApiController.class, "postArticleXml");
+        router.POST().route("/notify/").with(NotificationController.class, "receiveAssistance");
+        router.GET().route("/getNotify").with(NotificationController.class, "checkAssistence");
 
     }
 

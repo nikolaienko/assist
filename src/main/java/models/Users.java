@@ -17,11 +17,11 @@ public class Users {
     public String info;
     
     public Users() {}
-    
-    public Users(String username, int password, String info) {
+
+    public Users(String username, int password, String fullname, String info) {
         this.username = username;
         this.password = password;
+        this.fullname = fullname;
         this.info = info;
     }
- 
 }

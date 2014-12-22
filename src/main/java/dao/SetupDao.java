@@ -30,7 +30,7 @@ public class SetupDao {
         if (userses.size() == 0) {
 
             // Create a new users and save it
-            Users test = new Users("test", "test".hashCode(), "Test Test");
+            Users test = new Users("test", "test".hashCode(), "Test Test","Some test info");
             entityManager.persist(test);
 
             entityManager.setFlushMode(FlushModeType.COMMIT);

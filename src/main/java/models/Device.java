@@ -14,12 +14,12 @@ public class Device {
     public Double lat;
     public Double lng;
     @ElementCollection(fetch=FetchType.EAGER)
-    public List<Users> users;
+    public List<Long> users;
 
     public Device() {
     }
 
-    public Device(List<Users> users, Double lat, Double lng) {
+    public Device(List<Long> users, Double lat, Double lng) {
         this.users = users;
         this.lat = lat;
         this.lng = lng;
