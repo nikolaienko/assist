@@ -25,7 +25,7 @@ import javax.persistence.TypedQuery;
 import models.Article;
 import models.ArticleDto;
 import models.ArticlesDto;
-import models.Users;
+import models.User;
 import ninja.jpa.UnitOfWork;
 
 import com.google.inject.Inject;
@@ -92,21 +92,21 @@ public class ArticleDao {
     }
     
     /**
-     * Returns false if users cannot be found in database.
+     * Returns false if user cannot be found in database.
      */
     @Transactional
     public boolean postArticle(String username, ArticleDto articleDto) {
         
         EntityManager entityManager = entitiyManagerProvider.get();
         
-        Query query = entityManager.createQuery("SELECT x FROM Users x WHERE username = :usernameParam");
-        Users users = (Users) query.setParameter("usernameParam", username).getSingleResult();
+        Query query = entityManager.createQuery("SELECT x FROM User x WHERE username = :usernameParam");
+        User user = (User) query.setParameter("usernameParam", username).getSingleResult();
         
-        if (users == null) {
+        if (user == null) {
             return false;
         }
         
-        Article article = new Article(users, articleDto.title, articleDto.content);
+        Article article = new Article(user, articleDto.title, articleDto.content);
         entityManager.persist(article);
         
         return true;

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="AssistanceNG:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="AssistanceNG-1.0-SNAPSHOT.war">
+    <root id="archive" name="ss-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="AssistanceNG:war exploded" />
     </root>
   </artifact>

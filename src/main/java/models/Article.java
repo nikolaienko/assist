@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 
 @Entity
@@ -32,7 +33,7 @@ public class Article {
     
     public Article() {}
     
-    public Article(Users author, String title, String content) {
+    public Article(User author, String title, String content) {
         this.authorIds = Lists.newArrayList(author.id);
         this.title = title;
         this.content = content;
