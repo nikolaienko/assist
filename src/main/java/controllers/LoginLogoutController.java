@@ -43,8 +43,8 @@ public class LoginLogoutController {
                             Context context) {
 
         boolean isUserNameAndPasswordValid = userDao.isUserAndPasswordValid(username, password.hashCode());
-        
-        
+
+        System.out.println(isUserNameAndPasswordValid);
         if (isUserNameAndPasswordValid) {
             context.getSessionCookie().put("username", username);
             context.getFlashCookie().success("login.loginSuccessful");
