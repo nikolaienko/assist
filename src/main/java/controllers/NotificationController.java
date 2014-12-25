@@ -43,7 +43,7 @@ public class NotificationController {
         //if (accident!=null && validateAccident(accident)){
             if (accidentDao.createAccident(new Accident(Lists.newArrayList(1),lat,lng)))
                 return Results.status(201);
-        //return Results.badRequest();
+        return Results.badRequest();
 
     }
 
