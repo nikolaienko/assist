@@ -36,11 +36,7 @@ public class LoginLogoutController {
     ///////////////////////////////////////////////////////////////////////////
     // Login
     ///////////////////////////////////////////////////////////////////////////
-    public Result login(Context context) {
 
-        return Results.html();
-
-    }
 
     public Result loginPost(@Param("username") String username,
                             @Param("password") int password,
