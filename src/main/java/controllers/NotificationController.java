@@ -4,6 +4,7 @@ package controllers;
  * Created by vlad on 12/22/14.
  */
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import dao.AccidentDao;
@@ -15,6 +16,7 @@ import ninja.Context;
 import ninja.Result;
 import ninja.Results;
 import ninja.cache.NinjaCache;
+import ninja.params.Param;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -35,12 +37,13 @@ public class NotificationController {
     AccidentDao accidentDao;
     @Inject
     UserDao userDao;
-    public Result receiveAssistance(Accident accident) {
-        if (accident!=null && validateAccident(accident)){
-            if (accidentDao.createAccident(accident))
+    public Result receiveAssistance(@Param("lat") Double lat,
+                                    @Param("lng") Double lng,
+                                    Context context) {
+        //if (accident!=null && validateAccident(accident)){
+            if (accidentDao.createAccident(new Accident(Lists.newArrayList(1),lat,lng)))
                 return Results.status(201);
-        }
-        return Results.badRequest();
+        //return Results.badRequest();
 
     }
 

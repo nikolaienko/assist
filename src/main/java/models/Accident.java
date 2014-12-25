@@ -14,7 +14,7 @@ public class Accident {
     public Long id;
 
     @ElementCollection(fetch=FetchType.EAGER)
-    public List<Device> deviceId;
+    public List<Integer> deviceId;
 
 
     public Double lat;
@@ -25,7 +25,7 @@ public class Accident {
     public Accident() {
     }
 
-    public Accident(List<Device> deviceId, Double lat, Double lng) {
+    public Accident(List<Integer> deviceId, Double lat, Double lng) {
         this.deviceId = deviceId;
         this.lat = lat;
         this.lng = lng;
