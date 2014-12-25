@@ -49,7 +49,7 @@ public class LoginLogoutController {
             context.getSessionCookie().put("username", username);
             context.getFlashCookie().success("login.loginSuccessful");
             
-            return Results.redirect("/");
+            return Results.ok();
             
         } else {
             
