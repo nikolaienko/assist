@@ -39,10 +39,10 @@ public class LoginLogoutController {
 
 
     public Result loginPost(@Param("username") String username,
-                            @Param("password") int password,
+                            @Param("password") String password,
                             Context context) {
 
-        boolean isUserNameAndPasswordValid = userDao.isUserAndPasswordValid(username, password);
+        boolean isUserNameAndPasswordValid = userDao.isUserAndPasswordValid(username, password.hashCode());
         
         
         if (isUserNameAndPasswordValid) {
